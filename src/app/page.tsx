@@ -1,101 +1,274 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FirebaseStorageGallery } from "@/components/FirebaseStorageGallery";
+import ScrollAnimationIntro from "@/components/ScrollAnimationIntro/index";
+import {ArrowLeft, GalleryVerticalEnd,Smile,MessageSquare,} from "lucide-react";
+import AboutSection from "@/components/about-section";
+import ContactSection from "@/components/contact-section";
+import TeaserIntro from "@/components/TeaserIntro";
+import LoadingScreen from "@/components/LoadingScreen";
+import SiteFooter from "@/components/SiteFooter";
+import { SparklesWrapper } from "@/components/SparklesWrapper"; //Hover de sparkles
+import WatchReelButton from "@/components/WatchReelButton";
+import SubTitle from "@/components/SubTitle";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [currentView, setCurrentView] = useState<
+    "home" | "portfolio" | "about" | "contact"
+  >("home");
+  const [loading, setLoading] = useState(true);
+  const [teaserFinished, setTeaserFinished] = useState(false);
+  const [fadeIn, setFadeIn] = useState(false); // Nuevo estado para activar fade-bottom
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  // Función para cambiar a la vista de portfolio
+  const showPortfolio = () => {
+    setCurrentView("portfolio");
+  };
+
+  // Función para cambiar a about
+  const showAbout = () => {
+    setCurrentView("about");
+  };
+
+  // Función para cambiar a contact
+  const showContact = () => {
+    setCurrentView("contact");
+  };
+
+  // Función para volver al home
+  const showHome = () => {
+    setCurrentView("home");
+  };
+
+  // Variantes de animación para las transiciones
+  const pageVariants = {
+    initial: { opacity: 0, y: 20 },
+    in: { opacity: 1, y: 0 },
+    out: { opacity: 0, y: -20 },
+  };
+
+  const pageTransition = {
+    type: "tween",
+    ease: "anticipate",
+    duration: 0.5,
+  };
+
+  useEffect(() => {
+    if (teaserFinished) {
+      const timeout = setTimeout(() => {
+        setFadeIn(true);
+      }, 400); // 400ms de delay, puedes ajustar
+
+      return () => clearTimeout(timeout);
+    }
+  }, [teaserFinished]);
+
+  useEffect(() => {
+    const preloadResources = async () => {
+      const assets = [
+        "/images/Xristopher01.jpg",
+        "/images/Xristopher02.jpg",
+        "/images/Xristopher03.jpg",
+        "/videos/Showreel2023.mp4",
+        "/images/Xristopher05.jpg",
+        "/images/Xristopher06.jpg",
+      ];
+
+      const promises = assets.map((src) => {
+        if (src.endsWith(".mp4")) {
+          return new Promise((resolve) => {
+            const video = document.createElement("video");
+            video.src = src;
+            video.onloadeddata = () => resolve(true);
+            video.onerror = () => resolve(true); // no bloquea por error
+          });
+        } else {
+          return new Promise((resolve) => {
+            const img = new Image();
+            img.src = src;
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(true);
+          });
+        }
+      });
+
+      await Promise.all(promises);
+      setLoading(false);
+    };
+
+    preloadResources();
+  }, []);
+
+  if (loading) return <LoadingScreen />;
+
+  return (
+    <div className="min-h-screen">
+      
+      <AnimatePresence mode="wait">
+        {currentView === "home" && (
+          <motion.div
+            key="home"
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            {/* Nuevo teaser visual */}
+            <div className="w-full overflow-hidden relative">
+              <div
+                className={`w-full transition-opacity duration-700 ${
+                  fadeIn ? "fade-bottom opacity-[0.2]" : "opacity-100"
+                }`}
+              >
+                <TeaserIntro onFinish={() => setTeaserFinished(true)} />
+              </div>
+              
+
+              {/* Solo mostramos el contenido principal si el teaser terminó */}
+              {teaserFinished && (
+                <>
+                
+                  <div className="absolute inset-0 flex items-center justify-center flex-col mt-[20rem] cursor-default">
+                    <motion.h1
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5, duration: 0.8 }}
+                      className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white text-center mix-blend-difference tracking-tighter leading-[3.5rem]"
+                    >
+                      christopher{" "}
+                    </motion.h1>
+                    <motion.h1
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.7, duration: 0.8 }}
+                      className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white text-center mix-blend-difference tracking-tighter -mt-[2rem]"
+                    >
+                      miranda
+                    </motion.h1>
+                    <SubTitle/>
+                  </div>
+                   {/* Frase inspiracional */}
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.2, duration: 0.6 }}
+                    className="text-xl sm:text-2xl font-medium  text-center"
+                  >
+                    creativity in every frame.
+                  </motion.p>
+                </>
+              )}
+            </div>
+            {/* Solo mostramos el contenido principal si el teaser terminó */}
+            {teaserFinished && (
+              <>
+              <WatchReelButton teaserFinished={teaserFinished} />
+                {/* Contenido Principal */}
+                <div className="w-full max-w-7xl mx-auto px-4 text-center text-white">
+                  {/* Botones de navegación con estilos mejorados */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1, duration: 0.6 }}
+                    className="flex justify-center mt-10"
+                  >
+                    {" "}
+                    <SparklesWrapper>
+                      <motion.button
+                        onClick={showPortfolio}
+                        className="flex items-center gap-3 bg-white text-black rounded-full px-8 py-3 text-lg sm:text-xl font-bold shadow-xl hover:bg-gray-200 transition-all duration-300"
+                        whileHover={{ scale: 1.06 }}
+                        whileTap={{ scale: 0.97 }}
+                      >
+                        <GalleryVerticalEnd className="w-6 h-6" />
+                        Watch Portfolio
+                      </motion.button>{" "}
+                    </SparklesWrapper>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.2, duration: 0.6 }}
+                    className="flex flex-wrap justify-center gap-4 mt-6 w-full"
+                  >
+                    <motion.button
+                      onClick={showAbout}
+                      className="flex items-center gap-2 border-2 border-white text-white rounded-full px-6 py-2 text-base sm:text-lg font-medium hover:bg-white hover:text-black transition-colors"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Smile className="w-5 h-5" />
+                      About Me
+                    </motion.button>
+                    <motion.button
+                      onClick={showContact}
+                      className="flex items-center gap-2 border-2 border-white text-white rounded-full px-6 py-2 text-base sm:text-lg font-medium hover:bg-white hover:text-black transition-colors"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <MessageSquare className="w-5 h-5" />
+                      Contact
+                    </motion.button>
+                  </motion.div>
+
+                 
+
+                  {/* Introducción con animación de scroll */}
+                  <ScrollAnimationIntro showPortfolio={showPortfolio} />
+                </div>
+
+                {/* Testimonios de Instagram */}
+                <SiteFooter />
+              </>
+            )}
+          </motion.div>
+        )}
+
+        {currentView === "portfolio" && (
+          <motion.div
+            key="portfolio"
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+            className="min-h-screen bg-black"
           >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+            {/* Botón de regreso en esquina superior izquierda */}
+            <div className="fixed top-4 left-4 z-50">
+              <motion.button
+                onClick={showHome}
+                className="bg-white text-black rounded-full p-3 shadow-lg hover:bg-gray-100 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <ArrowLeft size={20} />
+              </motion.button>
+            </div>
+
+            {/* Header del portfolio */}
+            <div className="w-full px-4 py-4  text-center">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">
+                Portfolio
+              </h1>
+            </div>
+
+            {/* Contenido del portfolio */}
+            <div className="px-4  mx-auto">
+              <FirebaseStorageGallery />
+            </div>
+          </motion.div>
+        )}
+
+        {currentView === "about" && (
+          <AboutSection onBackClick={showHome} onContactClick={showContact} />
+        )}
+
+        {currentView === "contact" && <ContactSection onBackClick={showHome} />}
+      </AnimatePresence>
     </div>
   );
 }

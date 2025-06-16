@@ -35,7 +35,7 @@ export default function ContactSection({ onBackClick }: ContactSectionProps) {
 
       <div className="max-w-6xl mx-auto px-4 py-8 pt-20">
         <div className="text-center mb-12">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">Let's Create Together</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">Let&apos;s Create Together</h1>
           <p className="text-lg sm:text-xl text-gray-400">Ready to bring your ideas to life? Get in touch!</p>
         </div>
 
@@ -50,17 +50,17 @@ export default function ContactSection({ onBackClick }: ContactSectionProps) {
               <h3 className="text-2xl font-bold text-white mb-6">Get In Touch</h3>
               <div className="space-y-4">
                 <motion.a
-                  href="mailto:contact@christophermiranda.com"
+                  href="mailto:christopher.mrnd98@gmail.com"
                   className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group"
                   whileHover={{ x: 5 }}
                 >
                   <div className="bg-white/10 p-3 rounded-full group-hover:bg-white/20 transition-colors">
                     <Mail size={20} />
                   </div>
-                  <span>contact@christophermiranda.com</span>
+                  <span>christopher.mrnd98@gmail.com</span>
                 </motion.a>
                 <motion.a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/christopher.mrnd/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group"
@@ -69,10 +69,10 @@ export default function ContactSection({ onBackClick }: ContactSectionProps) {
                   <div className="bg-white/10 p-3 rounded-full group-hover:bg-white/20 transition-colors">
                     <Instagram size={20} />
                   </div>
-                  <span>@christophermiranda</span>
+                  <span>@christopher.mrnd</span>
                 </motion.a>
                 <motion.a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/christopher-miranda-0a75a426a/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group"
@@ -85,6 +85,34 @@ export default function ContactSection({ onBackClick }: ContactSectionProps) {
                 </motion.a>
               </div>
             </div>
+             {/* Botón Book a Call */}
+          <motion.a
+            href="TU_ENLACE_DE_GOOGLE_CALENDAR_AQUÍ"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white text-black rounded-full px-8 py-3 text-lg font-semibold flex items-center gap-2 w-fit"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            {/* Icono de agenda */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+              <line x1="16" x2="16" y1="2" y2="6" />
+              <line x1="8" x2="8" y1="2" y2="6" />
+              <line x1="3" x2="21" y1="10" y2="10" />
+            </svg>
+            Book a call
+          </motion.a>
           </motion.div>
 
           <motion.div

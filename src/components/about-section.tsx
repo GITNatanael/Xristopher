@@ -41,7 +41,7 @@ export default function AboutSection({ onBackClick, onContactClick }: AboutSecti
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-6">About Me</h1>
             <div className="space-y-6 text-gray-300 text-base sm:text-lg leading-relaxed">
               <p>
-                Hi, I'm Christopher Miranda, a passionate 2D animator and digital illustrator with over 5 years of
+                Hi, I&apos;m Christopher Miranda, a passionate 2D animator and digital illustrator with over 5 years of
                 experience bringing stories to life through motion and art.
               </p>
               <p>
@@ -59,7 +59,7 @@ export default function AboutSection({ onBackClick, onContactClick }: AboutSecti
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
-              Let's Work Together
+              Let&apos;s Work Together
             </motion.button>
           </motion.div>
           <motion.div
@@ -69,7 +69,7 @@ export default function AboutSection({ onBackClick, onContactClick }: AboutSecti
             className="relative"
           >
             <div className="aspect-[3/4] relative overflow-hidden rounded-2xl max-w-md mx-auto">
-              <Image src="/images/Anilustrator.jpg" alt="Christopher Miranda" fill className="object-cover" />
+              <Image src="/images/Xristopher08.jpg" alt="Christopher Miranda" fill className="object-cover" />
             </div>
           </motion.div>
         </div>

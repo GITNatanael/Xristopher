@@ -12,7 +12,7 @@ export default function LoadingScreen() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h1 className="text-3xl font-bold tracking-wider">Loading...</h1>
+      <h1 className="text-3xl   tracking-wider  sm:text-8xl font-bold text-white z-10 mix-blend-difference text-glow">loading...</h1>
     </motion.div>
   );
 }

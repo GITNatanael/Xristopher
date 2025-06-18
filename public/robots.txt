@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://tusitio.com
+Host: https://xristopher.vercel.app/
 
 # Sitemaps
-Sitemap: https://tusitio.com/sitemap.xml
+Sitemap: https://xristopher.vercel.app/sitemap.xml

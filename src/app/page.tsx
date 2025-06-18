@@ -65,46 +65,63 @@ export default function Home() {
     }
   }, [teaserFinished]);
 
+
   useEffect(() => {
-    const preloadResources = async () => {
-      const assets = [
-        "/images/Xristopher01.jpg",
-        "/images/Xristopher02.jpg",
-        "/images/Xristopher03.jpg",
-        "/videos/Showreel2023.mp4",
-        "/images/Xristopher05.jpg",
-        "/images/Xristopher06.jpg",
-      ];
+  const preloadResources = async () => {
+    const assets = [
+      "/videos/Showreel2023.mp4",
+    ];
 
-      const promises = assets.map((src) => {
-        if (src.endsWith(".mp4")) {
-          return new Promise((resolve) => {
-            const video = document.createElement("video");
-            video.src = src;
-            video.onloadeddata = () => resolve(true);
-            video.onerror = () => resolve(true); // no bloquea por error
-          });
-        } else {
-          return new Promise((resolve) => {
-            const img = new Image();
-            img.src = src;
-            img.onload = () => resolve(true);
-            img.onerror = () => resolve(true);
-          });
-        }
-      });
+    const promises = assets.map((src) => {
+      if (src.endsWith(".mp4")) {
+        return new Promise((resolve) => {
+          const video = document.createElement("video");
+          video.src = src;
+          video.onloadeddata = () => resolve(true);
+          video.onerror = () => resolve(true);
+          // Timeout individual (opcional)
+          setTimeout(() => resolve(true), 3000);
+        });
+      } else {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.src = src;
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(true);
+          setTimeout(() => resolve(true), 3000);
+        });
+      }
+    });
 
-      await Promise.all(promises);
-      setLoading(false);
-    };
+    // Promise.race entre assets y timeout general
+    await Promise.race([
+      Promise.all(promises),
+      new Promise((resolve) => setTimeout(resolve, 4000)) // Timeout máximo 4 segundos
+    ]);
 
-    preloadResources();
-  }, []);
+    setLoading(false);
+  };
+
+  preloadResources();
+}, []);
+
+useEffect(() => {
+  const setVh = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
+  setVh();
+  window.addEventListener('resize', setVh);
+  return () => window.removeEventListener('resize', setVh);
+}, []);
+
+
+
 
   if (loading) return <LoadingScreen />;
 
   return (
-    <div className="min-h-screen">
+   <div style={{ minHeight: 'calc(var(--vh, 1vh) * 100)' }}>
       
       <AnimatePresence mode="wait">
         {currentView === "home" && (

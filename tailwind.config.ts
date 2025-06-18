@@ -13,6 +13,12 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      height: {
+        "screen-dvh": "100dvh", // ← ✅ string, no array
+      },
+      minHeight: {
+        "screen-dvh": "100dvh", // ← ✅ también aquí
+      },
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0" },

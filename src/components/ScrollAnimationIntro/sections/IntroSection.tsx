@@ -25,7 +25,7 @@ export default function IntroSection({ scrollYProgress }: SectionProps) {
 
   return (
     <motion.div
-      className="sticky top-0 flex flex-col items-center justify-center h-screen w-full px-4"
+      className="sticky top-0 flex flex-col items-center justify-center min-h-screen-dvh w-full px-4"
       style={{
         opacity: introSectionOpacity,
         y: introSectionY,

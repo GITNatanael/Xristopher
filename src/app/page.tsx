@@ -110,7 +110,7 @@ export default function Home() {
   if (loading) return <LoadingScreen />;
 
   return (
-    <div className="min-h-screen-dvh">
+    <div className="min-h-[100dvh]">
       
       <AnimatePresence mode="wait">
         {currentView === "home" && (

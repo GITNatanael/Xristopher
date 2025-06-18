@@ -13,7 +13,7 @@ export default function BrandDesignSection({ scrollYProgress }: SectionProps) {
 
   return (
     <motion.div
-      className="sticky top-0 flex flex-col items-center justify-center min-h-screen-dvh w-full px-4 mt-[-250] overflow-hidden"
+      className="sticky top-0 flex flex-col items-center justify-center min-h-[100dvh] w-full px-4 mt-[-250] overflow-hidden"
       style={{
         opacity: shirtDesignOpacity,
         y: shirtDesignY,

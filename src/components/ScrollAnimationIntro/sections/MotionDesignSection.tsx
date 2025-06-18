@@ -39,6 +39,7 @@ export default function MotionDesignSection({ scrollYProgress }: SectionProps) {
             autoPlay
             muted
             loop
+            playsInline
             className="w-full h-full object-cover"
           ></video>
         </div>

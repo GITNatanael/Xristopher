@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { GrainOverlay } from "@/components/GrainOverlay";
 import "./globals.css";
 import clsx from "clsx";
+import { useEffect } from "react";
 
 const inter = Inter({
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -52,6 +53,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  useEffect(() => {
+  const setVh = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
+  setVh();
+  window.addEventListener('resize', setVh);
+  return () => window.removeEventListener('resize', setVh);
+}, []);
+
   return (
     <html lang="en">
       <head>

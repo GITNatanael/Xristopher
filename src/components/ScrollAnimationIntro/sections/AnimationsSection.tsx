@@ -34,7 +34,7 @@ export default function AnimationsSection({ scrollYProgress }: SectionProps) {
         }}
       >
         <div className="w-[100vw] h-[100vw] sm:w-[100vh] sm:h-[100vh] rounded-full overflow-hidden media-glow">
-          <video src="/videos/AnimationBW.mp4" autoPlay muted loop className="w-full h-full object-cover"></video>
+          <video src="/videos/AnimationBW.mp4" autoPlay muted playsInline loop className="w-full h-full object-cover"></video>
         </div>
       </motion.div>
 

@@ -82,6 +82,7 @@ export default function VfxSection({ scrollYProgress }: SectionProps) {
             src="/videos/vfxVideoSample.mp4"
             autoPlay
             muted
+            playsInline
             loop
             className="w-full h-full object-cover filter grayscale"
           ></video>

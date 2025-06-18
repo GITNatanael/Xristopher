@@ -237,6 +237,7 @@ export default function TeaserIntro({ onFinish }: { onFinish?: () => void }) {
                   src={slide.src}
                   autoPlay
                   muted
+                  playsInline
                   loop
                   className="w-full h-full object-cover rounded-md"
                 />

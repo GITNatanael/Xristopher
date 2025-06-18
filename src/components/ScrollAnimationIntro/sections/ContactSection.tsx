@@ -24,7 +24,7 @@ export default function ContactSection({ scrollYProgress }: SectionProps) {
         <div className="flex flex-col items-center justify-center gap-8 w-full">
           {/* Video */}
           <div className="w-full max-w-md overflow-hidden rounded-2xl ">
-            <video src="/videos/Kinectypo.mp4" autoPlay muted loop className="w-full h-full object-cover"></video>
+            <video src="/videos/Kinectypo.mp4" autoPlay muted playsInline loop className="w-full h-full object-cover"></video>
           </div>
 
           {/* Botón Book a Call */}

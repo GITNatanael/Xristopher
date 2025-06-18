@@ -71,6 +71,7 @@ export default function IntroSection({ scrollYProgress }: SectionProps) {
               src="/images/34 PRACTICAAF.mp4"
               autoPlay
               muted
+              playsInline
               loop
               className="w-full h-full object-cover object-[50%_50%] scale-[2.0]"
             ></video>
@@ -85,6 +86,7 @@ export default function IntroSection({ scrollYProgress }: SectionProps) {
               src="/images/33 MRND.mp4"
               autoPlay
               muted
+              playsInline
               loop
               className="w-full h-full object-cover object-[50%_50%] scale-[2.0]"
             ></video>

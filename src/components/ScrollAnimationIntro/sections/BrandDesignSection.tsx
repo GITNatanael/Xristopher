@@ -37,6 +37,7 @@ export default function BrandDesignSection({ scrollYProgress }: SectionProps) {
               alt="Branding Sphere 1"
               width={150}
               height={150}
+              quality={75}
               className="w-full h-full object-contain"
             />
           </div>
@@ -57,6 +58,7 @@ export default function BrandDesignSection({ scrollYProgress }: SectionProps) {
               alt="Branding Sphere 2"
               width={180}
               height={180}
+              quality={75}
               className="w-full h-full object-contain"
             />
           </div>
@@ -77,6 +79,7 @@ export default function BrandDesignSection({ scrollYProgress }: SectionProps) {
               alt="Branding Sphere 3"
               width={140}
               height={140}
+              quality={75}
               className="w-full h-full object-contain"
             />
           </div>
@@ -97,6 +100,7 @@ export default function BrandDesignSection({ scrollYProgress }: SectionProps) {
               alt="Branding Sphere 4"
               width={170}
               height={170}
+              quality={75}
               className="w-full h-full object-contain"
             />
           </div>
@@ -117,6 +121,7 @@ export default function BrandDesignSection({ scrollYProgress }: SectionProps) {
               alt="Branding Sphere 5"
               width={190}
               height={190}
+              quality={75}
               className="w-full h-full object-contain"
             />
           </div>
@@ -137,6 +142,7 @@ export default function BrandDesignSection({ scrollYProgress }: SectionProps) {
               alt="Branding Sphere 6"
               width={160}
               height={160}
+              quality={75}
               className="w-full h-full object-contain"
             />
           </div>
@@ -157,6 +163,7 @@ export default function BrandDesignSection({ scrollYProgress }: SectionProps) {
               alt="Branding Sphere 7"
               width={175}
               height={175}
+              quality={75}
               className="w-full h-full object-contain"
             />
           </div>

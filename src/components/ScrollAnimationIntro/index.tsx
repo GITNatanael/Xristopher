@@ -22,93 +22,78 @@ export default function ScrollAnimationIntro({
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerHeight, setContainerHeight] = useState(0);
 
-  // Configurar el scroll y la animación
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  // Calcular la altura del contenedor para permitir suficiente espacio para el scroll
-  useEffect(() => {
-    if (containerRef.current) {
-      // Aumentamos la altura para dar espacio a todas las secciones (8 secciones en total)
-      setContainerHeight(window.innerHeight * 9.5);
-    }
-  }, []);
-
-  // Opacidad del botón "Watch Portfolio" (visible del 25% al 75% del scroll del componente)
   const watchBtnOpacity = useTransform(
     scrollYProgress,
     [0.25, 0.3, 0.7, 0.75],
     [0, 1, 1, 0]
   );
 
+  useEffect(() => {
+    const updateContainerHeight = () => {
+      if (containerRef.current) {
+        const vh = window.innerHeight;
+        // 9.5 para el número de secciones, ajusta si agregas más
+        setContainerHeight(vh * 9.5);
+      }
+    };
+
+    updateContainerHeight();
+    window.addEventListener("resize", updateContainerHeight);
+    window.addEventListener("orientationchange", updateContainerHeight);
+
+    return () => {
+      window.removeEventListener("resize", updateContainerHeight);
+      window.removeEventListener("orientationchange", updateContainerHeight);
+    };
+  }, []);
+
   return (
-    <>
-      <div
-        ref={containerRef}
-        style={{ height: `${containerHeight}px` }}
-        className="relative w-full"
-      >
-        {/* Primera sección - Introducción */}
-        <IntroSection scrollYProgress={scrollYProgress} />
-
-        {/* Segunda sección - Título de Servicios */}
-        <ServicesSection scrollYProgress={scrollYProgress} />
-
-        <div className="relative h-fit w-full">
-          {/* Botón fijo con transición de opacidad */}
-          <motion.div
-            style={{ opacity: watchBtnOpacity }}
-            className="sticky top-1/2 z-30 w-full pointer-events-none"
-          >
-            {/* Desktop: botón al lado derecho centrado vertical */}
-            <div className="hidden sm:flex justify-end pr-8 translate-y-[-50%]">
-              <motion.button
-                onClick={showPortfolio}
-                className="pointer-events-auto border border-white/40 text-white/70  rounded-full transition-colors hover:bg-white hover:text-black px-5 py-2 text-sm font-medium  shadow-md hover:opacity-100 opacity-60"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Watch Portfolio
-              </motion.button>
-            </div>
-
-            {/* Mobile: botón al fondo, sin usar fixed */}
-            <div className="flex sm:hidden justify-center translate-y-[500%]">
-              <motion.button
-                onClick={showPortfolio}
-                className="pointer-events-auto border border-white/40 text-white/70  rounded-full transition-colors hover:bg-white hover:text-black px-5 py-2 text-sm font-medium  shadow-md hover:opacity-100 opacity-60"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Watch Portfolio
-              </motion.button>
-            </div>
-          </motion.div>
-
-          {/* Tercera sección - Illustrations */}
-          <IllustrationsSection scrollYProgress={scrollYProgress} />
-
-          {/* Cuarta sección - 2D Animations */}
-          <AnimationsSection scrollYProgress={scrollYProgress} />
-
-          {/* Quinta sección - Motion Design */}
-          <MotionDesignSection scrollYProgress={scrollYProgress} />
-
-          {/* Sexta sección - VFX */}
-          <VfxSection scrollYProgress={scrollYProgress} />
-
-          {/* Séptima sección - Design for your brand */}
-          <BrandDesignSection scrollYProgress={scrollYProgress} />
-        </div>
-
-        {/* Octava sección - Contact Me */}
-        <ContactSection scrollYProgress={scrollYProgress} />
-
-        {/* Testimonios de Instagram */}
-        <InstagramTestimonials />
+    <div
+      ref={containerRef}
+      style={{ height: `${containerHeight}px` }}
+      className="relative w-full"
+    >
+      <IntroSection scrollYProgress={scrollYProgress} />
+      <ServicesSection scrollYProgress={scrollYProgress} />
+      <div className="relative h-fit w-full">
+        <motion.div
+          style={{ opacity: watchBtnOpacity }}
+          className="sticky top-1/2 z-30 w-full pointer-events-none"
+        >
+          <div className="hidden sm:flex justify-end pr-8 translate-y-[-50%]">
+            <motion.button
+              onClick={showPortfolio}
+              className="pointer-events-auto border border-white/40 text-white/70 rounded-full transition-colors hover:bg-white hover:text-black px-5 py-2 text-sm font-medium shadow-md hover:opacity-100 opacity-60"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Watch Portfolio
+            </motion.button>
+          </div>
+          <div className="flex sm:hidden justify-center translate-y-[500%]">
+            <motion.button
+              onClick={showPortfolio}
+              className="pointer-events-auto border border-white/40 text-white/70 rounded-full transition-colors hover:bg-white hover:text-black px-5 py-2 text-sm font-medium shadow-md hover:opacity-100 opacity-60"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Watch Portfolio
+            </motion.button>
+          </div>
+        </motion.div>
+        <IllustrationsSection scrollYProgress={scrollYProgress} />
+        <AnimationsSection scrollYProgress={scrollYProgress} />
+        <MotionDesignSection scrollYProgress={scrollYProgress} />
+        <VfxSection scrollYProgress={scrollYProgress} />
+        <BrandDesignSection scrollYProgress={scrollYProgress} />
       </div>
-    </>
+      <ContactSection scrollYProgress={scrollYProgress} />
+      <InstagramTestimonials />
+    </div>
   );
 }

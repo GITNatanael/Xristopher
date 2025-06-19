@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Christopher | Illustrator & Animator",
     description:
       "Explore a creative portfolio full of animations, illustrations and visual effects.",
-    url: "https://tusitio.com",
+    url: "https://xristopher.vercel.app/",
     siteName: "Christopher MRND Portfolio",
     images: [
       {

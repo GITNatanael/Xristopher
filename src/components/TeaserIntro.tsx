@@ -182,7 +182,7 @@ export default function TeaserIntro({ onFinish }: { onFinish?: () => void }) {
       clearTimeout(timer3);
       clearTimeout(timerEnd);
     };
-  }, []);
+}, [onFinish]);
 
   const baseTextClasses =
     "text-4xl sm:text-5xl md:text-6xl font-extrabold text-white text-center tracking-tighter";

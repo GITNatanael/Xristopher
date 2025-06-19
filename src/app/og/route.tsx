@@ -1,13 +1,6 @@
 //Archivo para generar miniatura (Open Graph image) que refleje dinámicamente el contenido del sitio al momento de compartir el link.
-import { ImageResponse } from "next/og";
-
-// Configura el tamaño recomendado por Open Graph
-export const size = {
-  width: 1200,
-  height: 630,
-};
-
-export const contentType = "image/png";
+// src/app/og/route.tsx
+import { ImageResponse } from 'next/og';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -18,24 +11,28 @@ export async function GET(request: Request) {
     (
       <div
         style={{
-          fontSize: 60,
-          background: "black",
-          color: "white",
+          display: "flex",
           width: "100%",
           height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          backgroundColor: "black",
+          color: "white",
           justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          fontSize: 60,
           padding: "50px",
         }}
       >
-        <div style={{ fontWeight: "bold" }}>{title}</div>
+        <div>{title}</div>
         <div style={{ fontSize: 30, marginTop: 20 }}>{subtitle}</div>
       </div>
     ),
     {
-      ...size,
+      width: 1200,
+      height: 630,
+      headers: {
+        'Content-Type': 'image/png',
+      },
     }
   );
 }

@@ -1,10 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, easeInOut } from "framer-motion";
 import { FirebaseStorageGallery } from "@/components/FirebaseStorageGallery";
 import ScrollAnimationIntro from "@/components/ScrollAnimationIntro/index";
-import {ArrowLeft, GalleryVerticalEnd,Smile,MessageSquare,} from "lucide-react";
+import {
+  ArrowLeft,
+  GalleryVerticalEnd,
+  Smile,
+  MessageSquare,
+} from "lucide-react";
 import AboutSection from "@/components/about-section";
 import ContactSection from "@/components/contact-section";
 import TeaserIntro from "@/components/TeaserIntro";
@@ -12,7 +17,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 import SiteFooter from "@/components/SiteFooter";
 import { SparklesWrapper } from "@/components/SparklesWrapper"; //Hover de sparkles
 import WatchReelButton from "@/components/WatchReelButton";
-import SubTitle from "@/components/SubTitle"; 
+import SubTitle from "@/components/SubTitle";
 
 export default function Home() {
   const [currentView, setCurrentView] = useState<
@@ -50,11 +55,11 @@ export default function Home() {
   };
 
   const pageTransition = {
-    type: "tween",
-    ease: "anticipate",
+    type: "tween" as const,
+    ease: easeInOut,
     duration: 0.5,
   };
-
+  
   useEffect(() => {
     if (teaserFinished) {
       const timeout = setTimeout(() => {
@@ -65,54 +70,47 @@ export default function Home() {
     }
   }, [teaserFinished]);
 
-
   useEffect(() => {
-  const preloadResources = async () => {
-    const assets = [
-      "/videos/Showreel2023.mp4",
-    ];
+    const preloadResources = async () => {
+      const assets = ["/videos/Showreel2023.mp4"];
 
-    const promises = assets.map((src) => {
-      if (src.endsWith(".mp4")) {
-        return new Promise((resolve) => {
-          const video = document.createElement("video");
-          video.src = src;
-          video.onloadeddata = () => resolve(true);
-          video.onerror = () => resolve(true);
-          // Timeout individual (opcional)
-          setTimeout(() => resolve(true), 3000);
-        });
-      } else {
-        return new Promise((resolve) => {
-          const img = new Image();
-          img.src = src;
-          img.onload = () => resolve(true);
-          img.onerror = () => resolve(true);
-          setTimeout(() => resolve(true), 3000);
-        });
-      }
-    });
+      const promises = assets.map((src) => {
+        if (src.endsWith(".mp4")) {
+          return new Promise((resolve) => {
+            const video = document.createElement("video");
+            video.src = src;
+            video.onloadeddata = () => resolve(true);
+            video.onerror = () => resolve(true);
+            // Timeout individual (opcional)
+            setTimeout(() => resolve(true), 3000);
+          });
+        } else {
+          return new Promise((resolve) => {
+            const img = new Image();
+            img.src = src;
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(true);
+            setTimeout(() => resolve(true), 3000);
+          });
+        }
+      });
 
-    // Promise.race entre assets y timeout general
-    await Promise.race([
-      Promise.all(promises),
-      new Promise((resolve) => setTimeout(resolve, 4000)) // Timeout máximo 4 segundos
-    ]);
+      // Promise.race entre assets y timeout general
+      await Promise.race([
+        Promise.all(promises),
+        new Promise((resolve) => setTimeout(resolve, 4000)), // Timeout máximo 4 segundos
+      ]);
 
-    setLoading(false);
-  };
+      setLoading(false);
+    };
 
-  preloadResources();
-}, []);
-
-
+    preloadResources();
+  }, []);
 
   if (loading) return <LoadingScreen />;
- 
 
   return (
     <div className="min-h-screen">
-      
       <AnimatePresence mode="wait">
         {currentView === "home" && (
           <motion.div
@@ -132,12 +130,10 @@ export default function Home() {
               >
                 <TeaserIntro onFinish={() => setTeaserFinished(true)} />
               </div>
-              
 
               {/* Solo mostramos el contenido principal si el teaser terminó */}
               {teaserFinished && (
                 <>
-                
                   <div className="absolute inset-0 flex items-center justify-center flex-col mt-[20rem] cursor-default">
                     <motion.h1
                       initial={{ opacity: 0, y: 30 }}
@@ -155,9 +151,9 @@ export default function Home() {
                     >
                       miranda
                     </motion.h1>
-                    <SubTitle/>
+                    <SubTitle />
                   </div>
-                   {/* Frase inspiracional */}
+                  {/* Frase inspiracional */}
                   <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -172,7 +168,7 @@ export default function Home() {
             {/* Solo mostramos el contenido principal si el teaser terminó */}
             {teaserFinished && (
               <>
-              <WatchReelButton teaserFinished={teaserFinished} />
+                <WatchReelButton teaserFinished={teaserFinished} />
                 {/* Contenido Principal */}
                 <div className="w-full max-w-7xl mx-auto px-4 text-center text-white">
                   {/* Botones de navegación con estilos mejorados */}
@@ -220,8 +216,6 @@ export default function Home() {
                       Contact
                     </motion.button>
                   </motion.div>
-
-                 
 
                   {/* Introducción con animación de scroll */}
                   <ScrollAnimationIntro showPortfolio={showPortfolio} />

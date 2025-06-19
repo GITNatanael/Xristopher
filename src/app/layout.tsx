@@ -66,7 +66,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <head>
+        
           <link
             rel="preconnect"
             href="https://firebasestorage.googleapis.com"
@@ -79,7 +79,6 @@ export default function RootLayout({
             crossOrigin="anonymous"
           />
           <link rel="icon" href="/images/MRND.jpg" className=" rounded-full" />
-        </head>
       </head>
       <body
         className={clsx(

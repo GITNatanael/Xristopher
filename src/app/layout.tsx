@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description:
     "Professional 2D animation, illustration, motion graphics and VFX. Let your ideas come to life with unique visual storytelling.",
     icons: {
-    icon: "/fimages/MRND.jpg",
+    icon: "/images/favicon.ico",
   },
   keywords: [
     "Illustration",
@@ -78,7 +78,6 @@ export default function RootLayout({
             href="https://fonts.gstatic.com"
             crossOrigin="anonymous"
           />
-          <link rel="icon" href="/images/MRND.jpg" className=" rounded-full" />
       </head>
       <body
         className={clsx(

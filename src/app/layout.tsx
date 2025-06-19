@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: "Christopher | Illustrator & Animator",
   description:
     "Professional 2D animation, illustration, motion graphics and VFX. Let your ideas come to life with unique visual storytelling.",
+    icons: {
+    icon: "/fimages/MRND.jpg",
+  },
   keywords: [
     "Illustration",
     "Animation",
@@ -23,7 +26,7 @@ export const metadata: Metadata = {
     "Artist Portfolio",
     "Christopher",
   ],
-  authors: [{ name: "Christopher", url: "https://tusitio.com" }],
+  authors: [{ name: "Christopher", url: "https://www.instagram.com/christopher.mrnd/" }],
   creator: "nate.html",
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
@@ -36,7 +39,7 @@ export const metadata: Metadata = {
     siteName: "Christopher MRND Portfolio",
     images: [
       {
-        url: "/images/MRND.jpg",
+       url: "https://xristopher.vercel.app/api/og?title=Xristopher&subtitle=Creativity%20in%20every%20frame.",
         width: 1200,
         height: 630,
         alt: "Preview of Christopher's animation portfolio",
@@ -44,9 +47,15 @@ export const metadata: Metadata = {
     ],
     locale: "en_US",
     type: "website",
+   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Christopher | Illustrator & Animator",
+    description: "Explore a creative portfolio full of animations, illustrations and visual effects.",
+    images: ["https://xristopher.vercel.app/api/og?title=Xristopher&subtitle=Creativity%20in%20every%20frame."],
+    creator: "@ ",
   },
-};
-
+}
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -69,6 +78,7 @@ export default function RootLayout({
             href="https://fonts.gstatic.com"
             crossOrigin="anonymous"
           />
+          <link rel="icon" href="/images/MRND.jpg" className=" rounded-full" />
         </head>
       </head>
       <body

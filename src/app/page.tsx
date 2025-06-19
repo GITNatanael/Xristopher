@@ -12,8 +12,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 import SiteFooter from "@/components/SiteFooter";
 import { SparklesWrapper } from "@/components/SparklesWrapper"; //Hover de sparkles
 import WatchReelButton from "@/components/WatchReelButton";
-import SubTitle from "@/components/SubTitle";
-import VhFixer from "@/components/VhFixer";
+import SubTitle from "@/components/SubTitle"; 
 
 export default function Home() {
   const [currentView, setCurrentView] = useState<
@@ -109,10 +108,10 @@ export default function Home() {
 
 
   if (loading) return <LoadingScreen />;
-<VhFixer/>
+ 
 
   return (
-    <div className="min-h-[calc(var(--vh)_*_100)]">
+    <div className="min-h-screen">
       
       <AnimatePresence mode="wait">
         {currentView === "home" && (

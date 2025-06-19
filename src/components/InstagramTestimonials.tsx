@@ -88,7 +88,7 @@ const ReviewCard = ({
 
 export default function InstagramTestimonials() {
   return (
-    <div className=" flex w-full flex-col items-center justify-center overflow-hidden sticky top-0  min-h-[100dvh] px-4">
+    <div className=" flex w-full flex-col items-center justify-center overflow-hidden sticky top-0  min-h-screen px-4">
       <Marquee pauseOnHover className="[--duration:20s]">
         {firstRow.map((review) => (
           <ReviewCard key={review.username} {...review} />

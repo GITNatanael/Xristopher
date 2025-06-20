@@ -64,36 +64,45 @@ export default function IllustrationsSection({ scrollYProgress }: SectionProps) 
       }}
     >
       <motion.div
-        className="absolute z-0 overflow-hidden media-glow w-[100vw] h-[100vw] sm:w-[100vh] sm:h-[100vh]"
+        className="absolute z-0 overflow-hidden media-glow"
         style={{
           y: illustrationsImageY,
           scale: illustrationsImageScale,
           opacity: illustrationsImageOpacity,
         }}
       >
+        <div className="opacity-0 w-[100%] sm:w-[100vh] sm:h-[100vh] rounded-full overflow-hidden media-glow">
+          <Image
+            src="/images/Anilustrator.jpg"
+            alt="Illustrations"
+            width={300}
+            height={300}
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-        <motion.div className="absolute inset-0 z--10 blur-[0.5px]" style={{ y: layer2Y, scale: layer2Scale, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z--10 blur-[0.5px] w-[100%] sm:w-[100vh] sm:h-[100vh]" style={{ y: layer2Y, scale: layer2Scale, opacity: 1 }}>
           <Image src="/images/parallax/layer2.png" alt="Layer 2" fill className="object-contain" />
         </motion.div>
-        <motion.div className="absolute inset-0 z--10 blur-[0.6px]" style={{ y: layer3Y, scale: layer3Scale, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z--10 blur-[0.6px] w-[100%] sm:w-[100vh] sm:h-[100vh]" style={{ y: layer3Y, scale: layer3Scale, opacity: 1 }}>
           <Image src="/images/parallax/layer3.png" alt="Layer 3" fill className="object-contain" />
         </motion.div>
-        <motion.div className="absolute inset-0 z--10 blur-[0.6px]" style={{ y: layer1Y, scale: layer1Scale, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z--10 blur-[0.6px] w-[100%] sm:w-[100vh] sm:h-[100vh]" style={{ y: layer1Y, scale: layer1Scale, opacity: 1 }}>
           <Image src="/images/parallax/layer1.png" alt="Layer 1" fill className="object-contain" />
         </motion.div>
-        <motion.div className="absolute inset-0 z--5 blur-[0.6px]" style={{ y: layer4Y, scale: layer4Scale, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z--5 blur-[0.6px] w-[100%] sm:w-[100vh] sm:h-[100vh]" style={{ y: layer4Y, scale: layer4Scale, opacity: 1 }}>
           <Image src="/images/parallax/layer4.png" alt="Layer 4" fill className="object-contain" />
         </motion.div>
-        <motion.div className="absolute inset-0 z--5 blur-[0.6px]" style={{ y: layer5Y, scale: layer5Scale, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z--5 blur-[0.6px] w-[100%] sm:w-[100vh] sm:h-[100vh]" style={{ y: layer5Y, scale: layer5Scale, opacity: 1 }}>
           <Image src="/images/parallax/layer5.png" alt="Layer 5" fill className="object-contain" />
         </motion.div>
-        <motion.div className="absolute inset-0 z-60 blur-[0.5px]" style={{ y: layer6Y, scale: layer6Scale, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z-60 blur-[0.5px] w-[100%] sm:w-[100vh] sm:h-[100vh]" style={{ y: layer6Y, scale: layer6Scale, opacity: 1 }}>
           <Image src="/images/parallax/layer6.png" alt="Layer 6" fill className="object-contain" />
         </motion.div>
-        <motion.div className="absolute inset-0 z-70" style={{ y: layer7Y, scale: layer7Scale, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z-70 w-[100%] sm:w-[100vh] sm:h-[100vh]" style={{ y: layer7Y, scale: layer7Scale, opacity: 1 }}>
           <Image src="/images/parallax/layer7.png" alt="Layer 7" fill className="object-contain" />
         </motion.div>
-        <motion.div className="absolute inset-0 z-80" style={{ y: layer8Y, scale: layer8Scale, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z-80 w-[100%] sm:w-[100vh] sm:h-[100vh]" style={{ y: layer8Y, scale: layer8Scale, opacity: 1 }}>
           <Image src="/images/parallax/layer8.png" alt="Layer 8" fill className="object-contain" />
         </motion.div>
       </motion.div>

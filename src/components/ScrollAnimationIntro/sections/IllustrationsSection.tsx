@@ -64,7 +64,7 @@ export default function IllustrationsSection({ scrollYProgress }: SectionProps) 
       }}
     >
       <motion.div
-        className="absolute z-0 overflow-hidden media-glow"
+        className="absolute z-0 overflow-hidden media-glow w-[100vw] h-[100vw] sm:w-[100vh] sm:h-[100vh]"
         style={{
           y: illustrationsImageY,
           scale: illustrationsImageScale,

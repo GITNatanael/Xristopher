@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
 import { FirebaseStorageGallery } from "@/components/FirebaseStorageGallery";
-import ScrollAnimationIntro from "@/components/ScrollAnimationIntro/index";
 import {
   ArrowLeft,
   GalleryVerticalEnd,
@@ -16,8 +15,9 @@ import TeaserIntro from "@/components/TeaserIntro";
 import LoadingScreen from "@/components/LoadingScreen";
 import SiteFooter from "@/components/SiteFooter";
 import { SparklesWrapper } from "@/components/SparklesWrapper"; //Hover de sparkles
-import WatchReelButton from "@/components/WatchReelButton";
 import SubTitle from "@/components/SubTitle";
+const WatchReelButton = lazy(() => import("@/components/WatchReelButton"));
+const ScrollAnimationIntro = lazy(() => import("@/components/ScrollAnimationIntro/index"));
 
 export default function Home() {
   const [currentView, setCurrentView] = useState<
@@ -59,7 +59,7 @@ export default function Home() {
     ease: easeInOut,
     duration: 0.5,
   };
-  
+
   useEffect(() => {
     if (teaserFinished) {
       const timeout = setTimeout(() => {
@@ -168,7 +168,9 @@ export default function Home() {
             {/* Solo mostramos el contenido principal si el teaser terminó */}
             {teaserFinished && (
               <>
-                <WatchReelButton teaserFinished={teaserFinished} />
+                <Suspense fallback={null}>
+                  <WatchReelButton teaserFinished={teaserFinished} />
+                </Suspense>
                 {/* Contenido Principal */}
                 <div className="w-full max-w-7xl mx-auto px-4 text-center text-white">
                   {/* Botones de navegación con estilos mejorados */}
@@ -218,7 +220,9 @@ export default function Home() {
                   </motion.div>
 
                   {/* Introducción con animación de scroll */}
+                   <Suspense fallback={null}>
                   <ScrollAnimationIntro showPortfolio={showPortfolio} />
+                  </Suspense>
                 </div>
 
                 {/* Testimonios de Instagram */}

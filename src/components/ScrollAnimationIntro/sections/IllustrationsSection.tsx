@@ -71,28 +71,28 @@ export default function IllustrationsSection({ scrollYProgress }: SectionProps) 
           opacity: illustrationsImageOpacity,
         }}
       >
-        <motion.div className="absolute inset-0 z--10" style={{ y: layer2Y, scale: layer2Scale, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z--10" style={{ y: layer2Y, opacity: 1 }}>
           <Image src="/images/parallax/layer2.webp" alt="Layer 2" fill className="object-contain" />
         </motion.div>
-        <motion.div className="absolute inset-0 z--10" style={{ y: layer3Y, scale: layer3Scale, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z--10" style={{ y: layer3Y, opacity: 1 }}>
           <Image src="/images/parallax/layer3.webp" alt="Layer 3" fill className="object-contain" />
         </motion.div>
-        <motion.div className="absolute inset-0 z--10" style={{ y: layer1Y, scale: layer1Scale, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z--10" style={{ y: layer1Y, opacity: 1 }}>
           <Image src="/images/parallax/layer1.webp" alt="Layer 1" fill className="object-contain" />
         </motion.div>
-        <motion.div className="absolute inset-0 z--5" style={{ y: layer4Y, scale: layer4Scale, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z--5" style={{ y: layer4Y, opacity: 1 }}>
           <Image src="/images/parallax/layer4.webp" alt="Layer 4" fill className="object-contain" />
         </motion.div>
-        <motion.div className="absolute inset-0 z--5" style={{ y: layer5Y, scale: layer5Scale, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z--5" style={{ y: layer5Y, opacity: 1 }}>
           <Image src="/images/parallax/layer5.webp" alt="Layer 5" fill className="object-contain" />
         </motion.div>
-        <motion.div className="absolute inset-0 z-60" style={{ y: layer6Y, scale: layer6Scale, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z-60" style={{ y: layer6Y, opacity: 1 }}>
           <Image src="/images/parallax/layer6.webp" alt="Layer 6" fill className="object-contain" />
         </motion.div>
-        <motion.div className="absolute inset-0 z-70" style={{ y: layer7Y, scale: layer7Scale, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z-70" style={{ y: layer7Y, opacity: 1 }}>
           <Image src="/images/parallax/layer7.webp" alt="Layer 7" fill className="object-contain" />
         </motion.div>
-        <motion.div className="absolute inset-0 z-80" style={{ y: layer8Y, scale: layer8Scale, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z-80" style={{ y: layer8Y, opacity: 1 }}>
           <Image src="/images/parallax/layer8.webp" alt="Layer 8" fill className="object-contain" />
         </motion.div>
       </motion.div>

@@ -151,7 +151,7 @@ export default function VfxSection({ scrollYProgress }: SectionProps) {
               return (
                 <Image
                   key={i + 19}
-                  src={`/images/VfxSection/vfxVideoSample_${frameNumber}.png`}
+                  src={`/images/VfxSection/vfxVideoSample_${frameNumber}.webp`}
                   alt={`Frame ${i + 19}`}
                   className="w-20 h-14 sm:w-32 sm:h-20 object-cover rounded-md shadow-md"
                   width={80}

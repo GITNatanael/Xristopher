@@ -83,9 +83,10 @@ export default function IntroSection({ scrollYProgress }: SectionProps) {
             <Image
               alt="Ownerpic"
               src="/images/AnIlustrator.webp"
-              width={2}
-              height={1}
-              className="w-full h-full object-cover object-[50%_60%] scale-[2.0]"
+               width={800}
+              height={400}
+              unoptimized
+              className="w-full h-full object-cover object-[50%_40%] scale-[2.0]"
             />
           </motion.span>
           motion graphics designer

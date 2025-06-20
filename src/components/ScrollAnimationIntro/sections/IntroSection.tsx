@@ -70,7 +70,6 @@ export default function IntroSection({ scrollYProgress }: SectionProps) {
               alt="Ownerpic"
               width={800}
               height={400}
-              unoptimized
               className="w-full h-full object-cover object-[50%_40%] scale-[2.0]"
             />
           </motion.span>
@@ -86,7 +85,7 @@ export default function IntroSection({ scrollYProgress }: SectionProps) {
                width={800}
               height={400}
               unoptimized
-              className="w-full h-full object-cover object-[50%_40%] scale-[2.0]"
+              className="w-full h-full object-cover object-[50%_60%] scale-[2.0]"
             />
           </motion.span>
           motion graphics designer

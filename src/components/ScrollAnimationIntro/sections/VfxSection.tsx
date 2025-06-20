@@ -129,7 +129,7 @@ export default function VfxSection({ scrollYProgress }: SectionProps) {
             animate={{ x: ["0%", "-50%"] }}
             transition={{
               repeat: Infinity,
-              duration: 5, // mantén rápido como antes
+              duration: 3, // mantén rápido como antes
               ease: "linear",
             }}
           >
@@ -138,7 +138,7 @@ export default function VfxSection({ scrollYProgress }: SectionProps) {
               return (
                 <Image
                   key={i}
-                  src={`/images/VfxSection/vfxVideoSample_${frameNumber}.png`}
+                  src={`/images/VfxSection/vfxVideoSample_${frameNumber}.webp`}
                   alt={`Frame ${i}`}
                   className="w-20 h-14 sm:w-32 sm:h-20 object-cover rounded-md shadow-md"
                   width={80}

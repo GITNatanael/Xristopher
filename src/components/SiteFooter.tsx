@@ -76,7 +76,7 @@ export default function Footer() {
             className="flex items-center gap-2 hover:text-white text-white/60 transition-colors"
           >
             <Image
-              src="/images/Design by/nate.jpg" // Asegúrate de tener esta imagen en /public
+              src="/images/Design by/nate.ico" // Asegúrate de tener esta imagen en /public
               alt="nate.exe icon"
               className="w-6 h-6 rounded-full object-cover"
               width={6}

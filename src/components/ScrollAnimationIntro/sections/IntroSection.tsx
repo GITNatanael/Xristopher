@@ -55,7 +55,7 @@ export default function IntroSection({ scrollYProgress }: SectionProps) {
           >
             <Image
               alt="Ownerpic"
-              src="/images/Anilustrator.webp"
+              src="/images/AnIlustrator.webp"
               width={2}
               height={1}
               className="w-full h-full object-cover object-[50%_60%] scale-[2.0]"

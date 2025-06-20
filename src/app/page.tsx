@@ -2,7 +2,6 @@
 
 import { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
-import { FirebaseStorageGallery } from "@/components/FirebaseStorageGallery";
 import {
   ArrowLeft,
   GalleryVerticalEnd,
@@ -18,6 +17,7 @@ import { SparklesWrapper } from "@/components/SparklesWrapper"; //Hover de spark
 import SubTitle from "@/components/SubTitle";
 const WatchReelButton = lazy(() => import("@/components/WatchReelButton"));
 const ScrollAnimationIntro = lazy(() => import("@/components/ScrollAnimationIntro/index"));
+const FirebaseStorageGallery = lazy(() => import("@/components/FirebaseStorageGallery"));
 
 export default function Home() {
   const [currentView, setCurrentView] = useState<
@@ -263,7 +263,9 @@ export default function Home() {
 
             {/* Contenido del portfolio */}
             <div className="px-4  mx-auto">
+              <Suspense fallback={null}>
               <FirebaseStorageGallery />
+              </Suspense>
             </div>
           </motion.div>
         )}

@@ -13,7 +13,7 @@ interface FileItem {
   type: "image" | "video";
 }
 
-export function FirebaseStorageGallery() {
+export default function FirebaseStorageGallery() {
   const [fileList, setFileList] = useState<FileItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

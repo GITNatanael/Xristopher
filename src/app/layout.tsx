@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     siteName: "Christopher MRND Portfolio",
     images: [
       {
-       url: "https://xristopher.vercel.app/og?title=Xristopher&subtitle=Creativity%20in%20every%20frame.",
+       url: "https://xristopher.vercel.app/images/OpenGraph/christophermirandaOpenGraphPreview.jpg",
         width: 1200,
         height: 630,
         alt: "Preview of Christopher's animation portfolio",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Christopher | Illustrator & Animator",
     description: "Explore a creative portfolio full of animations, illustrations and visual effects.",
-    images: ["https://xristopher.vercel.app/og?title=Xristopher&subtitle=Creativity%20in%20every%20frame."],
+    images: ["https://xristopher.vercel.app/images/OpenGraph/christophermirandaOpenGraphPreview.jpg"],
     creator: "@ ",
   },
 }

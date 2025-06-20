@@ -5,7 +5,7 @@ import { ImageResponse } from 'next/og';
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const title = searchParams.get("title") || "christopher miranda";
-  const subtitle = searchParams.get("subtitle") || "Creativity in every frame.";
+  const subtitle = searchParams.get("subtitle") || "creativity in every frame.";
 
   return new ImageResponse(
     (

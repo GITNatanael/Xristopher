@@ -30,53 +30,49 @@ export default function TeaserIntro({ onFinish }: { onFinish?: () => void }) {
   const [slidesData, setSlidesData] = useState<SlideData[]>([]);
 
   // 🔁 Cargar imágenes y videos desde Firebase
-  useEffect(() => {
-    const fetchSlides = async () => {
-      try {
-        const folderRef = ref(storage, "projectFiles/");
-        const response = await listAll(folderRef);
+useEffect(() => {
+  const fetchSlides = async () => {
+    try {
+      const projectFilesRef = ref(storage, "projectFiles/");
+      const showreelRef = ref(storage, "homepageShowreel/Showreel2023.mp4");
 
-        const files: SlideData[] = await Promise.all(
-          response.items.map(async (item) => {
-            const url = await getDownloadURL(item);
-            const ext = item.name.split(".").pop()?.toLowerCase();
+      const [projectFilesResponse, showreelUrl] = await Promise.all([
+        listAll(projectFilesRef),
+        getDownloadURL(showreelRef),
+      ]);
 
-            const type: "image" | "video" = ["mp4", "webm", "ogg"].includes(
-              ext || ""
-            )
-              ? "video"
-              : "image";
+      const files: SlideData[] = await Promise.all(
+        projectFilesResponse.items.map(async (item) => {
+          const url = await getDownloadURL(item);
+          const ext = item.name.split(".").pop()?.toLowerCase();
+          const type: "image" | "video" = ["mp4", "webm", "ogg"].includes(ext || "")
+            ? "video"
+            : "image";
 
-            return { type, src: url };
-          })
-        );
+          return { type, src: url };
+        })
+      );
 
-        // Evita duplicados por URL
-        const unique = Array.from(
-          new Map(files.map((f) => [f.src, f])).values()
-        );
+      const unique = Array.from(new Map(files.map((f) => [f.src, f])).values());
+      const shuffled = unique.sort(() => 0.5 - Math.random());
+      const selected = shuffled.slice(0, 6);
 
-        // Mezcla aleatoria
-        const shuffled = unique.sort(() => 0.5 - Math.random());
+      // ✅ Inserta el video desde Firebase en la posición 3
+      const withFixedVideo: SlideData[] = [
+        ...selected.slice(0, 3),
+        { type: "video", src: showreelUrl },
+        ...selected.slice(3),
+      ];
 
-        // Selecciona 6 (3 antes, 3 después) sin contar el video fijo
-        const selected = shuffled.slice(0, 6);
+      setSlidesData(withFixedVideo);
+    } catch (err) {
+      console.error("Error fetching slides from Firebase", err);
+    }
+  };
 
-        // Inserta video fijo en la posición 3
-        const withFixedVideo: SlideData[] = [
-          ...selected.slice(0, 3),
-          { type: "video", src: "/videos/Showreel2023.mp4" },
-          ...selected.slice(3),
-        ];
+  fetchSlides();
+}, []);
 
-        setSlidesData(withFixedVideo);
-      } catch (err) {
-        console.error("Error fetching slides from Firebase", err);
-      }
-    };
-
-    fetchSlides();
-  }, []);
 
   const slides = useMemo(() => {
     if (slidesData.length === 0) return [];

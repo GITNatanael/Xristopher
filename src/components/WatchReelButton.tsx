@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Maximize2, X } from "lucide-react";
+import { ref, getDownloadURL } from "firebase/storage";
+import { storage } from "../config"; // Ajusta la ruta si es distinta
 
 interface WatchReelButtonProps {
   teaserFinished: boolean;
@@ -15,6 +17,7 @@ export default function WatchReelButton({
   const [isVisible, setIsVisible] = useState(false);
   const targetRef = useRef<HTMLDivElement | null>(null);
   const backdropRef = useRef<HTMLDivElement | null>(null);
+  const [videoUrl, setVideoUrl] = useState<string | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -52,6 +55,19 @@ export default function WatchReelButton({
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen]);
+  useEffect(() => {
+    const fetchVideoUrl = async () => {
+      try {
+        const videoRef = ref(storage, "homepageShowreel/Showreel2023.mp4");
+        const url = await getDownloadURL(videoRef);
+        setVideoUrl(url);
+      } catch (error) {
+        console.error("Error loading reel from Firebase:", error);
+      }
+    };
+
+    fetchVideoUrl();
+  }, []);
 
   return (
     <>
@@ -82,7 +98,7 @@ export default function WatchReelButton({
 
       {/* Video fullscreen */}
       <AnimatePresence>
-        {isOpen && (
+        {isOpen && videoUrl && (
           <motion.div
             className="fixed top-0 left-0 w-screen h-screen z-[999] bg-black/90 backdrop-blur-md flex items-center justify-center"
             initial={{ opacity: 0 }}
@@ -97,7 +113,7 @@ export default function WatchReelButton({
           >
             <motion.video
               key="video"
-              src="/videos/Showreel2023.mp4"
+              src={videoUrl}
               autoPlay
               loop
               controls

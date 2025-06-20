@@ -4,7 +4,7 @@ import { ImageResponse } from 'next/og';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const title = searchParams.get("title") || "Xristopher";
+  const title = searchParams.get("title") || "christopher miranda";
   const subtitle = searchParams.get("subtitle") || "Creativity in every frame.";
 
   return new ImageResponse(
@@ -23,7 +23,7 @@ export async function GET(request: Request) {
           padding: "50px",
         }}
       >
-        <div>{title}</div>
+        <div className='text-4xl sm:text-5xl md:text-6xl font-extrabold text-white text-center mix-blend-difference tracking-tighter '>{title}</div>
         <div style={{ fontSize: 30, marginTop: 20 }}>{subtitle}</div>
       </div>
     ),

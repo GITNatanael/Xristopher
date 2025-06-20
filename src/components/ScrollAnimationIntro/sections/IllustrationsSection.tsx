@@ -31,20 +31,14 @@ export default function IllustrationsSection({ scrollYProgress }: SectionProps) 
   const illustrationsImageOpacity = useTransform(scrollYProgress, [0.225, 0.25, 0.3, 0.325], [0, 0.5, 0.5, 0])
 
   const layer1Y = useTransform(scrollYProgress, [0.225, 0.325], isMobile ? [-50, -400] : [-100, -870])
-  
+  const layer1Scale = useTransform(scrollYProgress, [1.225, 1.25, 1.3, 1.325], isMobile ? [1.4, 1.45, 1.45, 1.4] : [1.74, 1.79, 1.79, 1.74])
+
   const layer2Y = useTransform(scrollYProgress, [0.225, 0.325], isMobile ? [200, -600] : [300, -860])
- 
+  const layer2Scale = useTransform(scrollYProgress, [1.225, 1.25, 1.3, 1.325], isMobile ? [1.6, 1.65, 1.65, 1.6] : [1.72, 1.77, 1.77, 1.72])
+
   const layer3Y = useTransform(scrollYProgress, [0.225, 0.325], isMobile ? [-50, -500] : [-100, -1000])
- 
-  const layer4Y = useTransform(scrollYProgress, [0.225, 0.325], isMobile ? [-100, -450] : [-200, -700])
-  
-  const layer5Y = useTransform(scrollYProgress, [0.225, 0.325], isMobile ? [0, -400] : [0, -700])
- 
-  const layer6Y = useTransform(scrollYProgress, [0.225, 0.325], isMobile ? [-50, -350] : [-100, -650])
- 
-  const layer7Y = useTransform(scrollYProgress, [0.225, 0.325], isMobile ? [-50, -200] : [0, -500])
- 
-  const layer8Y = useTransform(scrollYProgress, [0.225, 0.325], isMobile ? [0, -150] : [0, -400])
+  const layer3Scale = useTransform(scrollYProgress, [1.225, 1.25, 1.3, 1.325], isMobile ? [1.6, 1.65, 1.65, 1.6] : [1.74, 1.79, 1.79, 1.74])
+
 
   return (
     <motion.div
@@ -63,30 +57,16 @@ export default function IllustrationsSection({ scrollYProgress }: SectionProps) 
           opacity: illustrationsImageOpacity,
         }}
       >
-        <motion.div className="absolute inset-0 z--10" style={{ y: layer2Y, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z--10" style={{ y: layer2Y, scale: layer2Scale, opacity: 1 }}>
           <Image src="/images/parallax/layer2.webp" alt="Layer 2" fill className="object-contain" />
         </motion.div>
-        <motion.div className="absolute inset-0 z--10" style={{ y: layer3Y, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z--10" style={{ y: layer3Y, scale: layer3Scale, opacity: 1 }}>
           <Image src="/images/parallax/layer3.webp" alt="Layer 3" fill className="object-contain" />
         </motion.div>
-        <motion.div className="absolute inset-0 z--10" style={{ y: layer1Y, opacity: 1 }}>
+        <motion.div className="absolute inset-0 z--10" style={{ y: layer1Y, scale: layer1Scale, opacity: 1 }}>
           <Image src="/images/parallax/layer1.webp" alt="Layer 1" fill className="object-contain" />
         </motion.div>
-        <motion.div className="absolute inset-0 z--5" style={{ y: layer4Y, opacity: 1 }}>
-          <Image src="/images/parallax/layer4.webp" alt="Layer 4" fill className="object-contain" />
-        </motion.div>
-        <motion.div className="absolute inset-0 z--5" style={{ y: layer5Y, opacity: 1 }}>
-          <Image src="/images/parallax/layer5.webp" alt="Layer 5" fill className="object-contain" />
-        </motion.div>
-        <motion.div className="absolute inset-0 z-60" style={{ y: layer6Y, opacity: 1 }}>
-          <Image src="/images/parallax/layer6.webp" alt="Layer 6" fill className="object-contain" />
-        </motion.div>
-        <motion.div className="absolute inset-0 z-70" style={{ y: layer7Y, opacity: 1 }}>
-          <Image src="/images/parallax/layer7.webp" alt="Layer 7" fill className="object-contain" />
-        </motion.div>
-        <motion.div className="absolute inset-0 z-80" style={{ y: layer8Y, opacity: 1 }}>
-          <Image src="/images/parallax/layer8.webp" alt="Layer 8" fill className="object-contain" />
-        </motion.div>
+       
       </motion.div>
 
       <TextAnimate

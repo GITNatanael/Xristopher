@@ -33,7 +33,7 @@ export default function BrandDesignSection({ scrollYProgress }: SectionProps) {
         >
           <div className="w-[100px] h-[100px] sm:w-[400px] sm:h-[400px] rounded-full overflow-hidden">
             <Image
-              src="/images/branding/BrandingSphere-1.png"
+              src="/images/branding/BrandingSphere-1.webp"
               alt="Branding Sphere 1"
               width={150}
               height={150}
@@ -54,7 +54,7 @@ export default function BrandDesignSection({ scrollYProgress }: SectionProps) {
         >
           <div className="w-[120px] h-[120px] sm:w-[400px] sm:h-[400px] rounded-full overflow-hidden">
             <Image
-              src="/images/branding/BrandingSphere2.png"
+              src="/images/branding/BrandingSphere2.webp"
               alt="Branding Sphere 2"
               width={180}
               height={180}
@@ -75,7 +75,7 @@ export default function BrandDesignSection({ scrollYProgress }: SectionProps) {
         >
           <div className="w-[90px] h-[90px] sm:w-[400px] sm:h-[400px] rounded-full overflow-hidden">
             <Image
-              src="/images/branding/BrandingSphere3.png"
+              src="/images/branding/BrandingSphere3.webp"
               alt="Branding Sphere 3"
               width={140}
               height={140}
@@ -96,7 +96,7 @@ export default function BrandDesignSection({ scrollYProgress }: SectionProps) {
         >
           <div className="w-[110px] h-[110px] sm:w-[400px] sm:h-[400px] rounded-full overflow-hidden">
             <Image
-              src="/images/branding/BrandingSphere4.png"
+              src="/images/branding/BrandingSphere4.webp"
               alt="Branding Sphere 4"
               width={170}
               height={170}
@@ -117,7 +117,7 @@ export default function BrandDesignSection({ scrollYProgress }: SectionProps) {
         >
           <div className="w-[130px] h-[130px] sm:w-[400px] sm:h-[400px] rounded-full overflow-hidden ">
             <Image
-              src="/images/branding/BrandingSphere5.png"
+              src="/images/branding/BrandingSphere5.webp"
               alt="Branding Sphere 5"
               width={190}
               height={190}
@@ -138,7 +138,7 @@ export default function BrandDesignSection({ scrollYProgress }: SectionProps) {
         >
           <div className="w-[100px] h-[100px] sm:w-[400px] sm:h-[400px] rounded-full overflow-hidden ">
             <Image
-              src="/images/branding/BrandingSphere-6.png"
+              src="/images/branding/BrandingSphere-6.webp"
               alt="Branding Sphere 6"
               width={160}
               height={160}
@@ -159,7 +159,7 @@ export default function BrandDesignSection({ scrollYProgress }: SectionProps) {
         >
           <div className="w-[115px] h-[115px] sm:w-[400px] sm:h-[400px] rounded-full overflow-hidden ">
             <Image
-              src="/images/branding/BrandingSphere7.png"
+              src="/images/branding/BrandingSphere7.webp"
               alt="Branding Sphere 7"
               width={175}
               height={175}

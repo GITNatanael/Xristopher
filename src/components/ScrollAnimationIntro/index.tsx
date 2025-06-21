@@ -72,9 +72,8 @@ export default function ScrollAnimationIntro({
               className="pointer-events-auto border border-white/40 text-white/70 rounded-full transition-colors hover:bg-white hover:text-black px-5 py-2 text-sm font-medium shadow-md hover:opacity-100 opacity-60 flex gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-            >
+            > <ArrowUpRight size={16}  />
               Watch Portfolio 
-               <ArrowUpRight size={16} />
             </motion.button>
           </div>
           <div className="flex sm:hidden justify-center translate-y-[500%]">
@@ -83,9 +82,9 @@ export default function ScrollAnimationIntro({
               className="pointer-events-auto border border-white/40 text-white/70 rounded-full transition-colors hover:bg-white hover:text-black px-5 py-2 text-sm font-medium shadow-md hover:opacity-100 opacity-60 flex gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-            >
+            ><ArrowUpRight size={16}  />
               Watch Portfolio  
-              <ArrowUpRight size={16}  />
+              
             </motion.button>
           </div>
         </motion.div>

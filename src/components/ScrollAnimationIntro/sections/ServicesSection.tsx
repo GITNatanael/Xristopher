@@ -25,7 +25,7 @@ export default function ServicesSection({ scrollYProgress }: SectionProps) {
         duration={0.5}
         className="text-5xl sm:text-7xl font-bold text-white mb-4 text-glow"
       >
-        What can I do for you?
+        what can I do for you?
       </TextAnimate>
     </motion.div>
   )

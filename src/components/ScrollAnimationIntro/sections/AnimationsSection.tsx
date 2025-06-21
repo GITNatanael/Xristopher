@@ -45,7 +45,7 @@ export default function AnimationsSection({ scrollYProgress }: SectionProps) {
         duration={0.5}
         className="text-6xl sm:text-8xl font-bold text-white z-10 mix-blend-difference text-glow"
       >
-        2D Animations
+        2D animations
       </TextAnimate>
     </motion.div>
   )

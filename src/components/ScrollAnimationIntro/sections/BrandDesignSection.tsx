@@ -177,7 +177,7 @@ export default function BrandDesignSection({ scrollYProgress }: SectionProps) {
         duration={0.5}
         className="text-6xl sm:text-8xl font-bold text-white z-[900] mix-blend-difference text-glow relative"
       >
-        design for your brand
+        branding.
       </TextAnimate>
     </motion.div>
   )

@@ -104,7 +104,7 @@ export default function IllustrationsSection({ scrollYProgress }: SectionProps) 
         processJsx={true}
         className="text-6xl sm:text-8xl font-bold text-white z-10 mix-blend-difference text-glow"
       >
-        Illustrations
+        illustrations
       </TextAnimate>
     </motion.div>
   )

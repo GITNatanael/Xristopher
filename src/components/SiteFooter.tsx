@@ -82,7 +82,7 @@ export default function Footer() {
               width={6}
               height={6}
             />
-            <span>Design by nate.html</span>
+            <span>Design by Nate</span>
           </a>
         </div>
       </footer>
